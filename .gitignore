@@ -7,8 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Dependency directories
+node_modules/
+
+# Environment variables
 .env
+.env.local
+
+# IDE and editor files
+.idea/
+.vscode/
+
+# Compiled binary addons
+/build/
+
 dist
 dist-ssr
 *.local
