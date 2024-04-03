@@ -6,7 +6,8 @@ export const sendMessage = async (req, res) => {
     // Sb s pehle sender receiver ki id or message jo milega
     // phir conversation check krunga empty hai ya nh
     // Agr empty hui to create krunga new conversation, agr empty na hui to sirf push krunga message
-    // Bs phir response bhejdunga
+    // Bs phir db m save kr k response bhejdunga
+    
     const { message } = req.body;
     const senderId = req.user._id;
     const receiverId = req.params.id;
@@ -30,6 +31,9 @@ export const sendMessage = async (req, res) => {
     if(newMessage){
         conversation.messages.push(newMessage._id);
     }
+
+    await conversation.save()
+    await newMessage.save()
 
     res.status(201).json({newMessage})
 
